@@ -12,9 +12,9 @@ function playRound(playerSelection, computerSelection) {
 
     if(playerSelection=="rock"&&computerSelection=="scissors"||
       playerSelection=="scissors"&&computerSelection=="paper"||
-      playerSelection=="paper"&&computerSelection=="rock")return player_points++,console.log("It's a tie!!");
+      playerSelection=="paper"&&computerSelection=="rock")return player_points++,console.log("You win!");
     else if(playerSelection==computerSelection) return console.log("It's a tie!!")
-    else return computer_points++,console.log("It's a tie!!");
+    else return computer_points++,console.log("You Lose!");
 
   }
 function game(){
@@ -24,7 +24,8 @@ function game(){
         let computerSelection=getComputerChoice();
         playRound(playerSelection, computerSelection);
      }
-
+    if(player_points>computer_points)console.log("You won!!!")
+    else console.log("You lost!!!");
   }
 game();
    
