@@ -1,4 +1,4 @@
-const options=["rock","paper","scissors"];
+const options=["Rock","Paper","Scissors"];
 let player_points=0;
 let computer_points=0;
 function getComputerChoice(){
@@ -10,23 +10,49 @@ function getComputerChoice(){
 function playRound(playerSelection, computerSelection) {
     
 
-    if(playerSelection=="rock"&&computerSelection=="scissors"||
-      playerSelection=="scissors"&&computerSelection=="paper"||
-      playerSelection=="paper"&&computerSelection=="rock")return player_points++,console.log("You win!");
-    else if(playerSelection==computerSelection) return console.log("It's a tie!!")
-    else return computer_points++,console.log("You Lose!");
-
+  const roundResult = document.getElementById("round-result");
+  if(playerSelection=="Rock"&&computerSelection=="Scissors"||
+    playerSelection=="Scissors"&&computerSelection=="Paper"||
+    playerSelection=="Paper"&&computerSelection=="Rock") {
+    player_points++;
+    roundResult.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+  } else if(playerSelection==computerSelection) {
+    roundResult.textContent = `It's a tie! You both chose ${playerSelection}.`;
+  } else {
+    computer_points++;
+    roundResult.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`;
   }
-function game(){
+}
+function game() {
+  const gameResult = document.getElementById("game-result");
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const computerSelection = getComputerChoice();
+      playRound(button.id, computerSelection);
+      updateScore();
+      if (player_points == 5 || computer_points == 5) {
+        endGame();
+      }
+    });
+  });
 
-    for (let i = 0; i < 5; i++) {
-        let playerSelection=prompt("Input rock,paper or scissors.").toLowerCase();
-        let computerSelection=getComputerChoice();
-        playRound(playerSelection, computerSelection);
-     }
-    if(player_points>computer_points)console.log("You won!!!")
-    else console.log("You lost!!!");
+  function updateScore() {
+    document.getElementById("player-score").textContent = `Player: ${player_points}`;
+    document.getElementById("computer-score").textContent = `Computer: ${computer_points}`;
   }
+
+  function endGame() {
+    buttons.forEach((button) => {
+      button.disabled = true;
+    });
+    if (player_points > computer_points) {
+      gameResult.textContent = `Congratulations! You won the game ${player_points} to ${computer_points}.`;
+    } else {
+      gameResult.textContent = `Sorry, you lost the game ${player_points} to ${computer_points}.`;
+    }
+  }
+}
 game();
    
  
