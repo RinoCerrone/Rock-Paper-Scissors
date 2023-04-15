@@ -38,7 +38,7 @@ function game() {
   });
 
   function updateScore() {
-    document.getElementById("player-score").textContent = `Player: ${player_points}`;
+    document.getElementById("player-score").textContent = `Player: ${player_points}        `;
     document.getElementById("computer-score").textContent = `Computer: ${computer_points}`;
   }
 

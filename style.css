@@ -1,0 +1,45 @@
+body{
+    background-color: #88878a;
+}
+button{
+    width:150px;
+    height: 150px;
+    padding:20px 15px;
+    border-radius:50%;
+    font-size: 32px;
+    border:0;
+    background-color:#522d9c;
+    color: #d1404c;
+    
+}
+h1{
+    
+    margin:25px;
+    text-align: center;
+    font-size: 76px;
+}
+.buttons{
+    text-align: center;
+    display:flex;
+    justify-content: space-around;
+    margin-bottom: 80px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+.display{
+    text-align: center;
+    
+}
+#round-result,#scoreboard{
+    font-size: 32px;
+    margin:24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#scoreboard{
+    display: flex;
+    justify-content: space-around;
+}
+#game-result{
+    font-size: 64px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
